@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>后台</title>
+    <style>
+        .theader{
+            background-color: #dddddd;
+            width: 100%;
+            height: 200px;
+            position: relative;
+        }
+        .theader .brandname{
+            background-color: darkslateblue;
+            width: 20%;
+            height: 100px;
+            position: absolute;
+            top: 50px;
+            left: 100px;
+        }
+        .theader .header_list{
+            position: absolute;
+            right: 500px;
+            top: 100px;
+        }
+        .theader .header_list .i1{
+            display: inline-block;
+            width: 120px;
+            font-size: 20px;
+            color: white;
+        }
+        .theader .header_list .i1 .menu:hover{
+            background-color: blue;
+        }
+        .menu_list{
+            font-size: 20px;
+            height: 70px;
+        }
+        .hide{
+            display: none;
+        }
+        .tbody .check_list{
+            position: absolute;
+            top: 60px;
+            left: 50px;
+        }
+        .tbody .button_list{
+            position: absolute;
+            top: 40px;
+            left: 60px;
+        }
+        .tbody .button_list .button{
+            margin-left: 30px;
+        }
+        .display_none{
+            display: none;
+        }
+    </style>
+</head>
+<body style="height: 2000px;" id="header">
+    <div id="back_id">
+        <div class="display_none" style="background-color: black;opacity: 0.5;width: 100%;height: 100%;position: absolute;z-index: 1"></div>
+        <div class="display_none" style="background-color: white;width: 700px;height: 400px;position: absolute;z-index: 10;top: 50%;margin-top: -200px;right: 50%;margin-right: -350px">
+            <div style="position:absolute;top: 50%;left: 50%"><input type="button" value="登录" onclick="login_quit()"/></div>
+        </div>
+    </div>
+    <div class="theader">
+        <div class="brandname"></div>
+        <div class="header_list">
+            <a class="i1"><span class="menu">用户名</span></a>
+            <a class="i1"><span class="menu" onclick="login_xml()">登录</span></a>
+            <a class="i1"><span class="menu">注册</span></a>
+            <a class="i1" style="width: 150px"><span class="menu">好好学习</span></a>
+            <a class="i1"><span class="menu">天天向上</span></a>
+        </div>
+    </div>
+    <div class="tbody" style="position: relative">
+        <div style="width: 500px;height: 500px;background-color: #dddddd;margin: 50px;position: absolute;">
+            <div style="position: relative;top: 60px;left: 87px">
+                <div id="i1" class="personal" style="font-size: 30px;font-weight: bold" onclick="DisplayList('i1')">个人信息</div>
+                <div class="menu_list">
+                    <div>revise</div>
+                </div>
+                <div id="i2" class="personal" style="font-size: 30px;font-weight: bold" onclick="DisplayList('i2')">日志</div>
+                <div class="menu_list hide">
+                    <div>revise</div>
+                    <div>Jurnal Writing</div>
+                </div>
+                <div id="i3" class="personal" style="font-size: 30px;font-weight: bold" onclick="DisplayList('i3')">相册</div>
+                <div class="menu_list hide">
+                    <div>remove</div>
+                    <div>add::<input type="file"/></div>
+                </div>
+                <div id="i4" class="personal" style="font-size: 30px;font-weight: bold" onclick="DisplayList('i4')">留言板</div>
+                <div class="menu_list hide">
+                    <div>留言</div>
+                    <div>修改</div>
+                </div>
+            </div>
+        </div>
+        <div style="width: 800px;height: 500px;background-color: #dddddd;margin-top: 50px;margin-left: 800px;position: absolute">
+            <div class="check_list" id="b1">
+                <p><input type="checkbox"/></p>
+                <p><input type="checkbox"/></p>
+                <p><input type="checkbox"/></p>
+            </div>
+            <div class="button_list">
+                <a><input type="button" value="全选" class="button" onclick="ChooseAll()"/></a>
+                <a><input type="button" value="取消" class="button" onclick="CancellAll()"/></a>
+                <a><input type="button" value="反选" class="button" onclick="ReverseAll()"/></a>
+            </div>
+        </div>
+    </div>
+    <div class="tfoot">
+        <div>
+            <a href="#header"><input type="button" value="返回顶部" style="position: fixed;background-color: #dddddd;right: 20px;bottom: 20px"/></a>
+        </div>
+    </div>
+
+    <script>
+        function DisplayList(id) {
+            var listen_id = document.getElementById(id);
+            var menu_list = listen_id.parentElement.children;
+            for(var i=0;i<menu_list.length;i=i+2){
+                menu_list[i].nextElementSibling.classList.add('hide')
+            }
+            listen_id.nextElementSibling.classList.remove('hide')
+        }
+        
+        function ChooseAll() {
+            var button_id = document.getElementById('b1');
+            var p_list = button_id.children;
+            for(var i=0;i<p_list.length;i++){
+                var checkbox = p_list[i].children[0];
+                checkbox.checked = true;
+            }
+        }
+        function CancellAll() {
+            var button_id = document.getElementById('b1');
+            var p_list = button_id.children;
+            for(var i=0;i<p_list.length;i++){
+                var checkbox = p_list[i].children[0];
+                checkbox.checked = false;
+            }
+        }
+        function ReverseAll() {
+            var button_id = document.getElementById('b1');
+            var p_list = button_id.children;
+            for(var i=0;i<p_list.length;i++){
+                var checkbox = p_list[i].children[0];
+                if(checkbox.checked){
+                    checkbox.checked = false;
+                }else {
+                    checkbox.checked = true;
+                }
+            }
+        }
+
+        function login_xml() {
+            var backid = document.getElementById('back_id');
+            var backid_list = backid.children;
+            for(var i=0;i<backid_list.length;i++){
+                backid_list[i].classList.remove('display_none')
+            }
+        }
+        function login_quit() {
+            var backid = document.getElementById('back_id');
+            var backid_list = backid.children;
+            for(var i=0;i<backid_list.length;i++){
+                backid_list[i].classList.add('display_none')
+            }
+        }
+    </script>
+</body>
+</html>

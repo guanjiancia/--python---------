@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .hide{
+            display: none;
+        }
+        .item .header{
+            height: 30px;
+            background-color: black;
+            color: white;
+            width: 100px;
+            line-height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div style="width: 50px"></div>
+    <div style="height: 200px">
+        <div class="item">
+            <div id="i1" class="header" onclick="HideItems('i1')">菜单1</div>
+            <div class="content">
+                <div>内容1</div>
+                <div>内容1</div>
+                <div>内容1</div>
+            </div>
+        </div>
+        <div class="item">
+            <div id="i2" class="header" onclick="HideItems('i2')">菜单2</div>
+            <div class="content hide">
+                <div>内容2</div>
+                <div>内容2</div>
+                <div>内容2</div>
+            </div>
+        </div>
+        <div class="item">
+            <div id="i3" class="header" onclick="HideItems('i3')">菜单3</div>
+            <div class="content hide">
+                <div>内容3</div>
+                <div>内容3</div>
+                <div>内容3</div>
+            </div>
+        </div>
+        <div class="item">
+            <div id="i4" class="header" onclick="HideItems('i4')">菜单4</div>
+            <div class="content hide">
+                <div>内容4</div>
+                <div>内容4</div>
+                <div>内容4</div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function HideItems(num) {
+            var item_id = document.getElementById(num);
+            var item_list = item_id.parentElement.parentElement.children;
+            for (var i=0;i<item_list.length;i++) {
+                var current_list = item_list[i].children;
+                var current = current_list[1]
+                current.classList.add('hide')
+            }
+            item_id.nextElementSibling.classList.remove('hide')
+        }
+    </script>
+</body>
+</html>

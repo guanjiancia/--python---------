@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="i1">我是xxx</div>
+    <a>123</a>
+    <a>asd</a>
+    <a>ASD </a>
+    <script>
+        document.getElementById('i1');
+        document.getElementById('i1').innerText;
+        document.getElementById('i1').innerText = '我是丁老二'
+        tags = document.getElementsByTagName('a');
+        for (var i in tags){
+            tags[i].innerText=555;
+        }
+    </script>
+</body>
+</html>

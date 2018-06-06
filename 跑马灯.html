@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="i1" style="margin-top: 400px;margin-left: 600px;font-size: 60px">好好学习！天天向上！</div>
+    <script>
+        function func() {
+            var id = document.getElementById('i1');
+            var text = id.innerText;
+            var f = text.charAt(0);
+            var l = text.substring(1,text.length);
+            var new_text = l + f;
+            id.innerText = new_text;
+        }
+        setInterval('func()',800)
+    </script>
+</body>
+</html>

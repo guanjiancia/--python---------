@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .c1{
+            position: fixed;
+            background-color: black;
+            opacity: 0.5;
+            top: 0px;
+            right: 0px;
+            bottom: 0px;
+            left: 0px;
+        }
+        .c2{
+            position: fixed;
+            height: 300px;
+            width: 500px;
+            background-color: white;
+            top: 50%;
+            left: 50%;
+            margin-top: -250px;
+            margin-left: -250px;
+        }
+        .none{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <input type="button" value="添加" onclick="showModel()"/>
+        <input type="button" value="全选" onclick="ChooseAll()"/>
+        <input type="button" value="取消" onclick="CancellAll()"/>
+        <input type="button" value="反选" onclick="ReverseAll()"/>
+    </div>
+    <div id="cbox">
+        <p><input type="checkbox"/></p>
+        <p><input type="checkbox"/></p>
+        <p><input type="checkbox"/></p>
+    </div>
+    <!--遮罩层开始-->
+    <div class="c1 none" id="q1"></div>
+    <!--遮罩层结束-->
+
+    <!--弹出框开始-->
+    <div class="c2 none" id="q2">
+        <p><input type="text"></p>
+        <p><input type="text"></p>
+        <a><input type="button" value="确定"></a>
+        <a><input type="button" value="取消" onclick="CancelModel()"></a>
+    </div>
+    <!--弹出框结束-->
+
+    <script>
+        function showModel() {
+            document.getElementById('q1').classList.remove('none');
+            document.getElementById('q2').classList.remove('none');
+        }
+        function CancelModel() {
+            document.getElementById('q1').classList.add('none');
+            document.getElementById('q2').classList.add('none');
+        }
+        function ChooseAll() {
+            var box_father = document.getElementById('cbox');
+            var child_list = box_father.children;
+            for(var i=0;i<child_list.length;i++) {
+                var checkbox = child_list[i].children[0];
+                    checkbox.checked = true;
+            }
+        }
+        function CancellAll() {
+            var box_father = document.getElementById('cbox');
+            var child_list = box_father.children;
+            for(var i=0;i<child_list.length;i++) {
+                var checkbox = child_list[i].children[0];
+                    checkbox.checked = false;
+            }
+        }
+        function ReverseAll() {
+            var box_father = document.getElementById('cbox');
+            var child_list = box_father.children;
+            for(var i=0;i<child_list.length;i++) {
+                var checkbox = child_list[i].children[0];
+                    if (checkbox.checked){
+                        checkbox.checked = false;
+                    }else {
+                        checkbox.checked = true;
+                    }
+            }
+        }
+    </script>
+</body>
+</html>
